@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\MainPage;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('main');
-})->name('home');
+
+Route::get('/', [MainPage::class, 'images']);
 
 Route::get('/projects', function () {
     return view('projects');
@@ -13,5 +13,4 @@ Route::get('/projects', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('home');
-
 

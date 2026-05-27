@@ -20,22 +20,31 @@
         @endif
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <div class="bg-black">
-            <div name="information" class="bg-sky-">
-                <p>Ich bin Timo, PHP/Laravel Fullstack Developer mit mehreren Jahren Erfahrung in der Entwicklung moderner Webanwendungen.</p>
-            </div>
-                <h2 class="items-center">Tech Stack</h2>
-            <div name="rotating-techstack">
-
-            </div>  
-                <h2 class="items-center">Projects</h2>
-            <div name="projects">
-
-            </div>
-            <div name="page-end">
-                <a href="contact">Contact</a> 
-            </div>
+        
+        <div name="information" class="text-white">
+            <p>Ich bin Timo, PHP/Laravel Fullstack Developer mit mehreren Jahren Erfahrung in der Entwicklung moderner Webanwendungen.</p>
         </div>
+            <h2 class="text-3xl font-bold underline text-white">Tech Stack</h2>
+            <div name="images" class="flex flex-wrap items-center justify-center gap-8">
+                @foreach( $images as $image )
+                    <div class="w-36 h-36 flex items-center justify-center border border-gray-700 rounded">
+                        <img src="{{ asset('storage/images/' . $image) }}" alt="Image" 
+                        class="w-80 h-80 object-contain">
+                    </div>
+                @endforeach
+            </div>
+        <div name="rotating-techstack">
+
+        </div>  
+            <h2 class="text-3xl font-bold underline text-white">Projects</h2>
+        <div name="projects">
+
+        </div>
+        <div name="text-white text-3xl font-bold underline text-white">
+            <a href="contact">Contact</a> 
+            <a href="https://github.com/TroffelxD">GitHub</a>
+        </div>
+        
        
 
         @if (Route::has('login'))
