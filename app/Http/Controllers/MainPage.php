@@ -10,6 +10,7 @@ class MainPage extends Controller
     private string $sExtensions = "*.{jpg,jpeg,png,gif,bmp,webp}";
     public $sImages = "";
     public array $aImages = [];
+    public array $aProfilePicture = [];
 
     public function getImages() {
         $this->aImages = scandir(storage_path('app/private'));
@@ -18,10 +19,19 @@ class MainPage extends Controller
         unset($this->aImages[2]);
     }
 
+    public function getProfilePicture() {
+        $this->aProfilePicture = scandir(storage_path('app/public/pfp'));
+        unset($this->aProfilePicture[0]);
+        unset($this->aProfilePicture[1]);
+        unset($this->aProfilePicture[2]);
+    }
+
     public function images() {
         $this->getImages();
+        $this->getProfilePicture();
         return view('main', [
-            'images' => $this->aImages    
+            'images' => $this->aImages,
+            'pfp' => $this->aProfilePicture
         ]);
     }
 }

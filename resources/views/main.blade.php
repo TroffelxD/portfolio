@@ -21,21 +21,66 @@
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
         
-        <div name="information" class="text-white">
-            <p>Ich bin Timo, PHP/Laravel Fullstack Developer mit mehreren Jahren Erfahrung in der Entwicklung moderner Webanwendungen.</p>
-        </div>
-            <h2 class="text-3xl font-bold underline text-white">Tech Stack</h2>
-            <div name="images" class="flex flex-wrap items-center justify-center gap-8">
+        <section name="information" class="text-white py-20">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-8 md:p-10">
+                    <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] items-center gap-10">
+                
+                        <div class="w-full max-w-[280px] mx-auto md:mx-0">
+                            <img 
+                                src="{{ asset('storage/pfp/Profile_avatar_placeholder_large.png') }}" 
+                                alt="Profile image"
+                                class="w-full aspect-square object-cover rounded-l-3xl wave-fade-right-soft"
+                            >
+                        </div>
+
+                        <div>
+                            <p class="text-lg md:text-xl leading-relaxed text-white/90 max-w-2xl">
+                                Ich bin Timo, PHP/Laravel Fullstack Developer mit mehreren Jahren Erfahrung
+                                in der Entwicklung moderner Webanwendungen.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="text-white pb-20">
+            <h1 class="text-3xl md:text-4xl font-bold text-center underline">Tech Stack</h2> <br> <br>
+            <div name="images" class="grid grid-cols-3 items-center justify-center gap-3">
+                @php $counter = 1; @endphp
                 @foreach( $images as $image )
-                    <div class="w-36 h-36 flex items-center justify-center border border-gray-700 rounded">
-                        <img src="{{ asset('storage/images/' . $image) }}" alt="Image" 
-                        class="w-80 h-80 object-contain">
+                    <div class="w-80 h-15 flex items-center justify-center border border-white rounded overflow-hidden bg-gray p-1">
+                        <img 
+                            src="{{ asset('storage/images/' . $image) }}" 
+                            alt="Image"
+                            class="max-w-full max-h-full object-contain"
+                        >
+                        @if ($image == 'HTML.png')
+                            <p class="ml-5 flex flex-wrap items-center justify-center text-white">HTML</p>
+                        @elseif ($image == 'JavaScript.png')
+                            <p class="ml-5 flex flex-wrap items-center justify-center text-white">JavaScript</p>
+                        @elseif ($image == 'PHP.png')
+                            <p class="ml-5 flex flex-wrap items-center justify-center text-white">PHP</p>
+                        @elseif ($image == 'laravel.png')
+                            <p class="ml-5 flex flex-wrap items-center justify-center text-white">Laravel</p>
+                        @elseif ($image == 'myspl.png')
+                            <p class="ml-5 flex flex-wrap items-center justify-center text-white">SQL</p>
+                        @elseif ($image == 'tailwindcss.png')
+                            <p class="ml-5 flex flex-wrap items-center justify-center text-white">TailwindCSS</p>
+                        @endif
+                        @if ($counter == 3)
+                            <br>
+                            @php $counter = 1; @endphp
+                        @else
+                            @php $counter++; @endphp
+                        @endif
                     </div>
                 @endforeach
             </div>
-        <div name="rotating-techstack">
 
-        </div>  
+        </section>
+
             <h2 class="text-3xl font-bold underline text-white">Projects</h2>
         <div name="projects">
 
